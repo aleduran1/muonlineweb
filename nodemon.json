@@ -1,0 +1,18 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+    "node_modules/**/node_modules",
+    "assets/*",
+    "dist/*",
+    "logs/*",
+    "bundles**",
+    "src/bundles",
+    "webpack.config.js"
+  ],
+  "verbose": true,
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js hbs json"
+}
