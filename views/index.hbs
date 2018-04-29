@@ -1,0 +1,92 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="es"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="es"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="es"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="es">
+<!--<![endif]-->
+
+<head>
+  <title>Mu {{pageName}} - {{moduleTitle}}</title>
+  {{> head}}
+</head>
+
+<body>
+  <div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+  </div>
+  <!--[if lt IE 8]>
+          <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+  {{> loginModal}}
+  <video id="bg" class="bg" loop="loop" autoplay="">
+    Tu navegador no soporta HTML5 Video</video>
+  <aside class="shadow"></aside>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        {{> navBar}}
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <img id="logo" class="center-block img-responsive" src="/img/logo.png">
+    <div class="col-md-2 col-md-offset-1">
+      {{> leftColumn}}
+    </div>
+    <div class="col-md-6">
+      {{> centerColumn}}
+      <div class="well" id="centerColumn">
+        <div class="moduleContent">
+          <div class="messages">
+            {{#if success}}
+              <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+                <i class="fa fa-check-circle" aria-hidden="true"></i> {{success}}
+              </div>
+            {{/if}}
+            {{#if error}}
+              <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i> {{error}}
+              </div>
+            {{/if}}
+            {{#if validationError}}
+              <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                <ul>
+                  {{#each validationError}}
+                    <li>{{msg}}</li>
+                  {{/each}}
+                </ul>
+              </div>
+            {{/if}}
+            {{#if warning}}
+              <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{warning}}
+              </div>
+            {{/if}}
+          </div>
+          {{> (module)}}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      {{> rightColumn}}
+    </div>
+  </div>
+  <footer>
+    {{> footer}}
+  </footer>
+  {{> scripts}}
+</body>
+
+</html>
