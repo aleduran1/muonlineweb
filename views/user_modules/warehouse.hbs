@@ -1,0 +1,14 @@
+<div class="warehouse">
+  {{#each warehouse}}
+    {{#each this}}
+      {{#unless isEmpty}}
+        <div class="slot">
+          <img class="item" data-toggle="tooltip" data-placement="auto" data-html="true" title="{{dataHTML}}" src="{{image}}.gif"></img>
+        </div>
+        {{else}}
+          <div class="slot">
+          </div>
+      {{/unless}}
+    {{/each}}
+  {{/each}}
+</div>

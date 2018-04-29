@@ -1,0 +1,94 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <i class="fa fa-list"></i> MENÚ PRINCIPAL
+    <button type="button" class="panel-button pull-right" data-toggle="collapse" data-target="#menu">
+      <i class="fa fa-window-minimize"></i>
+    </button>
+  </div>
+  <div id="menu" class="panel-body collapse in">
+    <div class="list-group menu">
+      <a class="list-group-item {{#if active.news}}active{{/if}}" href="/">Inicio</a>
+      {{#if moduleIsActive.Contact}}
+      <a class="list-group-item {{#if active.contact}}active{{/if}}" href="/contact">Contacto</a>{{/if}} {{#if moduleIsActive.Downloads}}
+      <a class="list-group-item {{#if active.downloads}}active{{/if}}" href="/downloads">Descargas</a>{{/if}} {{#if moduleIsActive.Donate}}
+      <a class="list-group-item {{#if active.donate}}active{{/if}}" href="/donate">Donaciones</a>{{/if}}
+      <a class="list-group-item {{#if active.events}}active{{/if}}" href="/events">Eventos</a>
+      <a class="list-group-item {{#if active.serverinfo}}active{{/if}}" href="/serverinfo">Información del Servidor</a>
+      {{#if moduleIsActive.Marketplace}}
+      <a class="list-group-item {{#if active.marketplace}}active{{/if}}" href="/marketplace">Mercado{{/if}}
+        <a class="list-group-item {{#if active.help}}active{{/if}}" href="/help">Preguntas Frecuentes</a>
+        {{#if moduleIsActive.Ranking}}
+        <a class="list-group-item {{#if active.ranking}}active{{/if}}" href="/ranking">Ranking</a>{{/if}} {{#if moduleIsActive.Vote}}
+        <a class="list-group-item {{#if active.vote}}active{{/if}}" href="/vote">Votar por Mu {{pageName}}</a>{{/if}} {{#if moduleIsActive.Webshop}}
+        <a class="list-group-item {{#if active.webshop}}active{{/if}}" href="/webshop">Webshop</a>{{/if}} {{#if moduleIsActive.Rewards}}
+        <a class="list-group-item {{#if active.rewards}}active{{/if}}" href="/rewards">Obtener MuCoins</a>{{/if}}
+    </div>
+  </div>
+</div>
+<div class="hidden-xs hidden-sm panel panel-default">
+  <div class="panel-heading">
+    <i class="fa fa-clock-o"></i> HORARIOS Y EVENTOS
+    <button type="button" class="panel-button pull-right" data-toggle="collapse" data-target="#times">
+      <i class="fa fa-window-minimize"></i>
+    </button>
+  </div>
+  <div id="times" class="panel-body collapse in">
+    <div class="list-group menu">
+      <span class="list-group-item panel-text server-time">Horario del Servidor:
+        <span id="server-time" class="pull-right"></span>
+      </span>
+      <span class="list-group-item panel-text event-blood-castle">Blood Castle:
+        <span id="blood-castle-time" class="pull-right"></span>
+      </span>
+      <span class="list-group-item panel-text event-castle-deep">Castle Deep:
+        <span id="castle-deep-time" class="pull-right"></span>
+      </span>
+      <span class="list-group-item panel-text event-chaos-castle">Chaos Castle:
+        <span id="chaos-castle-time" class="pull-right"></span>
+      </span>
+      <span class="list-group-item panel-text event-devil-square">Devil Square:
+        <span id="devil-square-time" class="pull-right"></span>
+      </span>
+      <span class="list-group-item panel-text event-drop">Drop Event:
+        <span id="drop-event-time" class="pull-right"></span>
+      </span>
+      <span class="list-group-item panel-text event-golden-invasion">Golden Invasion:
+        <span id="golden-invasion-time" class="pull-right"></span>
+      </span>
+      <span class="list-group-item panel-text event-happy-hour">Happy Hour:
+        <span id="happy-hour-time" class="pull-right"></span>
+      </span>
+      <span class="list-group-item panel-text event-moss-merchant">Moss Merchant:
+        <span id="moss-merchant-time" class="pull-right"></span>
+      </span>
+      <span class="list-group-item panel-text event-red-dragon">Red Dragon:
+        <span id="red-dragon-time" class="pull-right"></span>
+      </span>
+      <span class="list-group-item panel-text event-skeleton-king">Skeleton King:
+        <span id="skeleton-king-time" class="pull-right"></span>
+      </span>
+      <span class="list-group-item panel-text event-white-wizard">White Wizard:
+        <span id="white-wizard-time" class="pull-right"></span>
+      </span>
+      <span class="list-group-item panel-text">Para más información click
+        <a href="/events">aquí</a>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="hidden-xs hidden-sm panel panel-default">
+  <div class="panel-heading facebook">
+    <i class="fa fa-facebook"></i> NUESTRA PÁGINA
+    <button type="button" class="panel-button pull-right" data-toggle="collapse" data-target="#facebook-page">
+      <i class="fa fa-window-minimize"></i>
+    </button>
+  </div>
+  <div id="facebook-page" class="panel-body collapse in">
+    <div class="fb-page" data-href="https://www.facebook.com/{{facebookPage}}" data-tabs="timeline" data-small-header="true"
+      data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
+      <blockquote cite="https://www.facebook.com/{{facebookPage}}/" class="fb-xfbml-parse-ignore">
+        <a href="https://www.facebook.com/{{facebookPage}}/">Mu {{pageName}}</a>
+      </blockquote>
+    </div>
+  </div>
+</div>

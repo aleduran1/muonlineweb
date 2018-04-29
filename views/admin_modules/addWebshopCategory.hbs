@@ -1,0 +1,65 @@
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        WEBSHOP: Add category
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          {{#if error}}
+            <div class="alert alert-danger alert-dismissible">
+              <h4><i class="icon fa fa-ban"></i> Problem!</h4>
+              {{error}}
+            </div>
+          {{/if}}
+          {{#if validationError}}
+            <div class="alert alert-danger alert-dismissible">
+              <h4><i class="icon fa fa-ban"></i> Problem!</h4>
+              <ul>
+                {{#each validationError}}
+                  <li>{{msg}}</li>
+                {{/each}}
+              </ul>
+            </div>
+          {{/if}}
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Adding a category...</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" method="post" action="/admincp/webshop/category/add">
+              <div class="box-body">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="discount">Discount (%):</label>
+                    <input type="text" class="form-control" id="discount" name="discount" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="active">Active: </label>
+                    <input type="checkbox" id="active" name="active" value="1">
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+              <input type="hidden" name="_csrf" value="{{csrfToken}}">
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+              <!-- /.box-body -->
+    </section>
+    <!-- /.content -->

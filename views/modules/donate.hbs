@@ -1,0 +1,103 @@
+<h3><i class="fa fa-money"></i> Donaciones</h3>
+<div class="well clearfix">
+  <h6><i class="fa fa-info-circle"></i> Una vez efectuado el pago contactar al Staff de Mu {{pageName}} para corroborar el pago y abonar los Mu Coins correspondientes, recuerda guardar los recibos de pago.</h6>
+</div>
+<div class="well clearfix">
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    {{!--     <div class="panel panel-default cuentadigital">
+      <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            CuentaDigital
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          asdasd
+        </div>
+      </div>
+    </div> --}}
+    <div class="panel panel-default">
+      <div class="panel-heading paypal" role="tab" id="headingTwo">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <i class="fa fa-paypal"></i> PayPal
+          </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="panel-body">
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" id="hosted_button_id" name="hosted_button_id">
+            <div class="form-group">
+              <label name="on0" for="os0" class="control-label">Seleccione el monto dispuesto a pagar</label>
+              <select class="form-control" name="os0" id="os0">
+                <option value="100">5,000 Mu Coins - $6,60 USD</option>
+                <option value="130">8,000 Mu Coins - $8,60 USD</option>
+                <option value="150">10,000 Mu Coins - $10,00 USD</option>
+                <option value="250">20,000 Mu Coins - $16,40 USD</option>
+                <option value="500">50,000 Mu Coins - $33,00 USD</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="on1" class="control-label">Cuenta:</label>
+              <input type="hidden" name="on1" value="Cuenta">
+              <input class="form-control" type="text" name="os1" maxlength="200">
+            </div>
+            <input type="hidden" name="currency_code" value="USD">
+            <center>
+              <button type="submit" class="btn btn-info raised">Efectuar Pago</button>
+            </center>
+            <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+          </form>
+          <p> </p>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading mercado-pago" role="tab" id="headingThree">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+           <img class="mercado-pago" src="/img/payment/mercadopago.png"> MercadoPago
+          </a>
+        </h4>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="currency" class="control-label">Seleccione su moneda local</label>
+            <select class="form-control" name="currency" id="currency">
+              <option value="ARS">Peso Argentino (ARS)</option>
+              <option value="EUR">Euro (EUR)</option>
+              <option value="CLP">Peso Chileno (CLP)</option>
+              <option value="UYU">Peso Uruguayo (UYU)</option>
+              <option value="PEN">Sol Peruano (PEN)</option>
+              <option value="VEF">Bolivar Venezolano (VEF)</option>
+              <option value="MXN">Peso Mexicano (MXN)</option>
+              <option value="BRL">Real Brasilero (BRL)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mp-select" class="control-label">Seleccione el monto dispuesto a pagar</label>
+            <select class="form-control" name="mp-select" id="mp-select">
+              <option id="precio-1" value="100">5,000 Mu Coins - $100 ARS</option>
+              <option id="precio-2" value="130">8,000 Mu Coins - $130 ARS</option>
+              <option id="precio-3" value="150">10,000 Mu Coins - $150 ARS</option>
+              <option id="precio-5" value="250">20,000 Mu Coins - $250 ARS</option>
+              <option id="precio-6" value="500">50,000 Mu Coins - $500 ARS</option>
+            </select>
+            <center><a mp-mode="dftl" href="lawia" name="MP-payButton" class='blue-tr-l-rn-arall' id="mp-link">Efectuar Pago</a></center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="well clearfix">
+  <h6><i class="fa fa-chevron-right"></i> Si los métodos de pago anteriores no te sirven en tu país o tienes algún inconveniente, no dudes en contactar al Staff en nuestro facebook o en la sección de contacto para que ellos hagan lo posible para ayudarte.</h6>
+  <a href="/contact">
+    <button class="btn btn-info raised">Contacto</button>
+  </a>
+</div>

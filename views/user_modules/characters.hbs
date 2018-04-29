@@ -1,0 +1,151 @@
+{{#if characters}} {{#each characters}}
+<div class="well clearfix">
+  <video class="character-avatar pull-right" loop="loop" autoplay="">
+    <source src="/img/classes/{{getClass Class}}.mp4" type="video/mp4">Tu navegador no soporta HTML5 Video
+  </video>
+  <h4>{{Name}}</h4>
+  <p>
+    <span class="account-label">Nivel: </span>
+    <span class="account-info" data-toggle="tooltip" data-placement="top" title="El nivel de {{Name}}">{{cLevel}}</span>
+  </p>
+  <p>
+    <span class="account-label">Resets: </span>
+    <span class="account-info" data-toggle="tooltip" data-placement="top" title="La cantidad de reset de {{Name}}">{{ResetCount}}</span>
+  </p>
+  <p>
+    <span class="account-label">Fuerza: </span>
+    <span class="account-info" data-toggle="tooltip" data-placement="top" title="Fuerza de {{Name}}">{{Strength}}</span>
+  </p>
+  <p>
+    <span class="account-label">Agilidad: </span>
+    <span class="account-info" data-toggle="tooltip" data-placement="top" title="Agilidad de {{Name}}">{{Dexterity}}</span>
+  </p>
+  <p>
+    <span class="account-label">Vitalidad: </span>
+    <span class="account-info" data-toggle="tooltip" data-placement="top" title="Vitalidad de {{Name}}">{{Vitality}}</span>
+  </p>
+  <p>
+    <span class="account-label">Energia: </span>
+    <span class="account-info" data-toggle="tooltip" data-placement="top" title="Energia de {{Name}}">{{Energy}}</span>
+  </p>
+  {{#ifDL Class}}
+  <p>
+    <span class="account-label">Comando: </span>
+    <span class="account-info" data-toggle="tooltip" data-placement="top" title="Comando de {{Name}}">{{../Leadership}}</span>
+  </p>
+  {{/ifDL}}
+  <p>
+    <span class="account-label">Locación: </span>
+    <span class="account-info" data-toggle="tooltip" data-placement="top" title="Mapa donde se encuentra {{Name}}">{{getMap MapNumber}}</span>
+  </p>
+  <p>
+    <span class="account-label">Estado: </span>
+    <span class="account-info" data-toggle="tooltip" data-placement="top" title="Estado PK de {{Name}}">{{getPK PkLevel}}</span>
+  </p>
+  <p>
+    <span class="account-label">Zen: </span>
+    <span class="account-info" data-toggle="tooltip" data-placement="top" title="Cantidad de Zen de {{Name}}">{{Money}}</span>
+  </p>
+  {{#unless ../stats.ConnectStat}} {{#if LevelUpPoint}}
+  <div class="modal fade" id="modal-{{Name}}" tabindex="-1" role="dialog" aria-labelledby="AddStats{{Name}}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="addStats-{{Name}}">
+            <i class="fa fa-plus" aria-hidden="true"></i> AGREGAR PUNTOS</h4>
+        </div>
+        <form action="/account/characters/addstats" method="POST">
+          <div class="modal-body">
+            <input type="hidden" name="cid" value="{{Name}}">
+            <input type="hidden" name="_csrf" value="{{../csrfToken}}">
+            <div class="form-group">
+              <label for="levelUpPoints" class="control-label">Puntos disponibles: {{LevelUpPoint}}</label>
+            </div>
+            <div class="form-group">
+              {{#ifGotLimit Strength}} {{!-- ifGotLimit devuelve si se alcanzo el maximo de stats en la config --}}
+              <label for="strength" class="control-label">Fuerza: {{../Strength}}</label>
+              <label for="stat" class="control-label">Ha alcanzado el límite</label>
+              {{else}}
+              <label for="strength" class="control-label">Fuerza: {{../Strength}}</label>
+              <input type="text" maxlength="5" class="form-control" name="strength"> {{/ifGotLimit}}
+            </div>
+            <div class="form-group">
+              {{#ifGotLimit Dexterity}}
+              <label for="agility" class="control-label">Agilidad: {{../Dexterity}}</label>
+              <label for="stat" class="control-label">Ha alcanzado el límite</label>
+              {{else}}
+              <label for="agility" class="control-label">Agilidad: {{../Dexterity}}</label>
+              <input type="text" maxlength="5" class="form-control" name="dexterity"> {{/ifGotLimit}}
+            </div>
+            <div class="form-group">
+              {{#ifGotLimit Vitality}}
+              <label for="vitality" class="control-label">Vitalidad: {{../Vitality}}</label>
+              <label for="stat" class="control-label">Ha alcanzado el límite</label>
+              {{else}}
+              <label for="vitality" class="control-label">Vitalidad: {{../Vitality}}</label>
+              <input type="text" maxlength="5" class="form-control" name="vitality"> {{/ifGotLimit}}
+            </div>
+            <div class="form-group">
+              {{#ifGotLimit Energy}}
+              <label for="energy" class="control-label">Energia: {{../Energy}}</label>
+              <label for="stat" class="control-label">Ha alcanzado el límite</label>
+              {{else}}
+              <label for="energy" class="control-label">Energia: {{../Energy}}</label>
+              <input type="text" maxlength="5" class="form-control" name="energy"> {{/ifGotLimit}}
+            </div>
+            {{#ifDL Class}}
+            <div class="form-group">
+              {{#ifGotLimit Leadership}}
+              <label for="command" class="control-label">Comando: {{../Leadership}}</label>
+              <label for="stat" class="control-label">Ha alcanzado el límite</label>
+              {{else}}
+              <label for="command" class="control-label">Comando: {{../Leadership}}</label>
+              <input type="text" maxlength="5" class="form-control" name="leadership"> {{/ifGotLimit}}
+            </div>
+            {{/ifDL}}
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary raised">Agregar</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-success raised" data-toggle="modal" data-target="#modal-{{Name}}">Agregar Puntos</button>
+  {{else}}
+  <button type="button" class="btn btn-danger raised disabled" data-toggle="tooltip" data-placement="top" title="{{Name}} no tiene puntos para agregar">Agregar Puntos</button>
+  {{/if}} {{#ifCanReset cLevel Money ResetCount ../auth.AccountLevel}}
+  <form class="button" action="/account/characters/reset" method="POST">
+    <input type="hidden" name="cid" value="{{../Name}}">
+    <input type="hidden" name="_csrf" value="{{../../csrfToken}}">
+    <button type="submit" class="btn btn-success raised" data-toggle="tooltip" data-placement="top" title="Click aqui para resetear a {{../Name}}">Resetear</button>
+  </form>
+  {{else}}
+  <button type="button" class="btn btn-danger raised disabled" data-toggle="tooltip" data-placement="top" title="{{../Name}} no cumple los requisitos para resetear">Resetear</button>
+  {{/ifCanReset}} {{#ifCanClearPK PkLevel Money ../auth.AccountLevel}}
+  <form class="button" action="/account/characters/clearpk" method="POST">
+    <input type="hidden" name="cid" value="{{../Name}}">
+    <input type="hidden" name="_csrf" value="{{../../csrfToken}}">
+    <button type="submit" class="btn btn-success raised" data-toggle="tooltip" data-placement="top" title="Click aqui para quitar el PK a {{../Name}}">Quitar PK</button>
+  </form>
+  {{else}}
+  <button type="button" class="btn btn-danger raised disabled" data-toggle="tooltip" data-placement="top" title="{{../Name}} no cumple los requisitos para quitarle el PK">Quitar PK</button>
+  {{/ifCanClearPK}}
+  <form class="button" action="/account/characters/unstuck" method="POST">
+    <input type="hidden" name="cid" value="{{Name}}">
+    <input type="hidden" name="_csrf" value="{{../csrfToken}}">
+    <button type="submit" class="btn btn-info raised" data-toggle="tooltip" data-placement="top" title="Click aqui para destrabar a {{Name}}">Destrabar Personaje</button>
+  </form>
+  {{else}}
+  <button type="button" class="btn btn-danger raised disabled" data-toggle="tooltip" data-placement="top" title="La cuenta se encuentra online">Agregar Puntos</button>
+  <button type="button" class="btn btn-danger raised disabled" data-toggle="tooltip" data-placement="top" title="La cuenta se encuentra online">Resetear</button>
+  <button type="button" class="btn btn-danger raised disabled" data-toggle="tooltip" data-placement="top" title="La cuenta se encuentra online">Quitar PK</button>
+  <button type="button" class="btn btn-danger raised disabled" data-toggle="tooltip" data-placement="top" title="La cuenta se encuentra online">Destrabar Personaje</button>
+  {{/unless}} {{!-- FIN DEL UNLESS DEL ESTADO DE CONEXION --}}
+</div>
+{{/each}} {{!-- FIN DEL EACH DE CADA PERSONAJE --}} {{else}}
+<h4>No tienes personajes creados</h4>
+{{/if}} {{!-- FIN DE SI TIENE PERSONAJES --}}

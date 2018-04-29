@@ -1,0 +1,35 @@
+<p><span class="account-label"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Usuario: </span>
+  <span class="account-info">{{auth.memb___id}}</span></p>
+<p><span class="account-label"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i> Correo Electrónico: </span>
+  <span class="account-info">{{auth.mail_addr}}</span></p>
+{{#if stats}}
+  <p><span class="account-label"><i class="fa fa-plug fa-fw" aria-hidden="true"></i> Estado: </span>
+    {{#if stats.ConnectStat}}
+      <span class="account-info green">En línea</span></p>
+  {{else}}
+    <span class="account-info red">Desconectado</span></p>
+    <p><span class="account-label"><i class="fa fa-gamepad fa-fw" aria-hidden="true"></i> Última vez en línea: </span>
+      <span class="account-info">{{date-format-dmyhms stats.DisConnectTM}}</span></p>
+    {{/if}}
+    <p><span class="account-label"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> Horas de juego: </span>
+      <span class="account-info">{{stats.OnlineHours}}</span></p>
+{{/if}}
+{{#if vip.active}}
+  <p><span class="account-label"><i class="fa fa-plus-circle fa-fw" aria-hidden="true"></i> VIP: </span>
+    <span class="account-info">{{vip.name}} hasta el {{date-format-dmyhms vip.last}}</span></p>
+{{else}}
+  <p><span class="account-label"><i class="fa fa-plus-circle fa-fw" aria-hidden="true"></i> VIP: 
+	<a href="/account/vip"><button type="button" class="btn btn-wazaa raised btn-xs">Adquirir VIP</button></a></span></p>
+{{/if}}
+<p><span class="account-label"><i class="fa fa-money fa-fw" aria-hidden="true"></i> Mu Coins: </span>
+  <span class="account-info">{{auth.mucoins}}</span></p>
+<hr>
+<a href="/account/changepassword">
+  <button type="button" class="btn btn-primary raised">Cambiar Contraseña</button>
+</a>
+<a href="/account/changemail">
+  <button type="button" class="btn btn-primary raised">Cambiar E-MAIL</button>
+</a>
+<a href="/donate">
+  <button type="button" class="btn btn-wazaa raised">Adquirir Mu Coins</button>
+</a>

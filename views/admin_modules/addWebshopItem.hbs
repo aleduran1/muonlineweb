@@ -1,0 +1,229 @@
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        WEBSHOP: Add Item
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          {{#if error}}
+            <div class="alert alert-danger alert-dismissible">
+              <h4><i class="icon fa fa-ban"></i> Problem!</h4>
+              {{error}}
+            </div>
+          {{/if}}
+          {{#if validationError}}
+            <div class="alert alert-danger alert-dismissible">
+              <h4><i class="icon fa fa-ban"></i> Problem!</h4>
+              <ul>
+                {{#each validationError}}
+                  <li>{{msg}}</li>
+                {{/each}}
+              </ul>
+            </div>
+          {{/if}}
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Adding an item...</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" method="post" action="/admincp/webshop/item/add">
+              <div class="box-body">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="hex">Item:</label>
+                    <select id="hex" name="hex" class="form-control">
+                      {{#each items.group}}
+                      <optgroup label="Group {{@index}}">
+                        {{#each this.itemID}}
+                        <option value="{{getHex this.iID @../index}}">{{this.name}}</option>
+                        {{/each}}
+                      </optgroup>
+                      {{/each}}
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="discount">Discount (%):</label>
+                    <input type="text" class="form-control" id="discount" name="discount" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="cost">Cost:</label>
+                    <input type="text" class="form-control" id="cost" name="cost" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="categoryid">Category:</label>
+                    <select id="categoryid" name="categoryid" class="form-control">
+                        {{#each webshopCategories}}
+                        <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="active">Active: </label>
+                    <input type="checkbox" id="active" name="active" value="1">
+                  </div>
+                </div>
+              </div>
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Options</h3>
+              </div>
+              <div class="box-body">
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="maxLevel">Max Level:</label>
+                    <select id="maxLevel" name="maxLevel" class="form-control">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="maxOption">Max Option:</label>
+                    <select id="maxOption" name="maxOption" class="form-control">
+                      <option id="option1" value="1">1</option>
+                      <option id="option2" value="2">2</option>
+                      <option id="option3" value="3">3</option>
+                      <option id="option4" value="4">4</option>
+                      <option id="option5" value="5">5</option>
+                      <option id="option6" value="6">6</option>
+                      <option id="option7" value="7">7</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="canLuck">Luck:</label>
+                    <input type="checkbox" id="canLuck" name="canLuck" value="1">
+                  </div>
+                  <div class="form-group">
+                    <label for="canSkill">Skill:</label>
+                    <input type="checkbox" id="canSkill" name="canSkill" value="1">
+                  </div>
+                  <div class="form-group">
+                    <label id="label-excellentOption1" for="excellentOption1">Excellent Option 1:</label>
+                    <input type="checkbox" id="excellentOption1" name="excellentOption1" value="1">
+                  </div>
+                  <div class="form-group">
+                    <label id="label-excellentOption2" for="excellentOption2">Excellent Option 2:</label>
+                    <input type="checkbox" id="excellentOption2" name="excellentOption2" value="1">
+                  </div>
+                  <div class="form-group">
+                    <label id="label-excellentOption3" for="excellentOption3">Excellent Option 3:</label>
+                    <input type="checkbox" id="excellentOption3" name="excellentOption3" value="1">
+                  </div>
+                  <div class="form-group">
+                    <label id="label-excellentOption4" for="excellentOption4">Excellent Option 4:</label>
+                    <input type="checkbox" id="excellentOption4" name="excellentOption4" value="1">
+                  </div>
+                  <div class="form-group">
+                    <label id="label-excellentOption5" for="excellentOption5">Excellent Option 5:</label>
+                    <input type="checkbox" id="excellentOption5" name="excellentOption5" value="1">
+                  </div>
+                  <div class="form-group">
+                    <label id="label-excellentOption6" for="excellentOption6">Excellent Option 6:</label>
+                    <input type="checkbox" id="excellentOption6" name="excellentOption6" value="1">
+                  </div>
+                  <div class="form-group">
+                    <label for="maxExcellent">Max Excellent Options:</label>
+                    <select id="maxExcellent" name="maxExcellent" class="form-control">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+              <input type="hidden" name="_csrf" value="{{csrfToken}}">
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+            <div class="overlay" style="display: none">
+              <i class="fa fa-refresh fa-spin"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+              <!-- /.box-body -->
+    </section>
+    <!-- /.content -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    <script src="/admincp/plugins/select2/select2.min.js"></script>
+    <script>
+    $("#hex").select2({
+      theme: "bootstrap"
+    });
+
+    $('#hex').change(function() {
+      $('#name').val($('#hex :selected').text());
+
+      $.ajax({
+        url: '/api/itemlist/byhex/' + $('#hex').val(),
+        error: function() {
+          console.log('ERROR');
+        },
+        dataType: 'json',
+        beforeSend: function() {
+          $('.overlay').css('display', 'inherit');
+        },
+        success: function(data) {
+          $('.overlay').css('display', 'none');
+          if (data.haveSkill == '0') {
+            if ($('#canSkill').is(':checked')) {
+              $('#canSkill').attr('checked', false); // Checks it
+            }
+            if (!$('#canSkill').is(':disabled')) {
+              $('#canSkill').attr('disabled', true);
+            }
+          } else {
+            if ($('#canSkill').is(':disabled')) {
+              $('#canSkill').attr('disabled', false);
+            }
+          }
+          $('#option1').text($('#option1').val() * data.optionMultiplier);
+          $('#option2').text($('#option2').val() * data.optionMultiplier);
+          $('#option3').text($('#option3').val() * data.optionMultiplier);
+          $('#option4').text($('#option4').val() * data.optionMultiplier);
+          $('#option5').text($('#option5').val() * data.optionMultiplier);
+          $('#option6').text($('#option6').val() * data.optionMultiplier);
+          $('#option7').text($('#option7').val() * data.optionMultiplier);
+          $('#label-excellentOption1').text(data.excellentText1);
+          $('#label-excellentOption2').text(data.excellentText2);
+          $('#label-excellentOption3').text(data.excellentText3);
+          $('#label-excellentOption4').text(data.excellentText4);
+          $('#label-excellentOption5').text(data.excellentText5);
+          $('#label-excellentOption6').text(data.excellentText6);
+        },
+        type: 'GET'
+
+      });
+
+    });
+    </script>

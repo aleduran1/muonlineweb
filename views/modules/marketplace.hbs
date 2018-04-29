@@ -1,0 +1,41 @@
+<div class="well well-trial clearfix">
+  <a href="/marketplace/mylistings">
+    <button class="btn btn-success raised pull-right"><i class="fa fa-plus-circle" aria-hidden="true"></i> MI MERCADO</button>
+  </a>
+  <div class="col-md-9">
+    <h6><i class="fa fa-info-circle"></i> Bienvenid@ al mercado, aqui puedes comprar items de otros usuarios por Mu Coins o puedes publicar tus propios items para vender haciendo click en MI MERCADO</h6>
+  </div>
+</div>
+<div class="well clearfix">
+  <h4>Buscar</h4>
+  <form role="search" method="get" action="/marketplace">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="input-group">
+        <input type="text" class="form-control" id="search" name="search" placeholder="Buscar..">
+        <div class="input-group-btn">
+          <button class="btn btn-search" type="submit"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="well clearfix">
+  <h4><i class="fa fa-list-alt" aria-hidden="true"></i> Listados</h4>
+  {{#each listings}}
+    <div class="well well-vip clearfix">
+      <form action="/marketplace/buy/{{id}}" method="POST">
+        <input type="hidden" name="_csrf" value="{{../csrfToken}}">
+        <button type="submit" class="btn btn-wazaa raised pull-right"><i class="fa fa-plus-circle" aria-hidden="true"></i> Comprar</button>
+        <div class="col-md-3">
+          <img class="center-block" data-toggle="tooltip" data-placement="auto" data-html="true" title="{{data.dataHTML}}" src="{{data.image}}.gif">
+        </div>
+        <div class="col-md-6 clearfix">
+          <p><span class="account-label">{{name}}</span></p>
+          <p><span class="account-description">{{description}}</span></p>
+          <p><span class="account-label">Costo: </span><span class="account-info">{{cost}} Mu Coins</span></p>
+          <p><span class="account-label">Usuario: </span><span class="account-info">{{publisher}}</span></p>
+        </div>
+      </form>
+    </div>
+  {{/each}}
+</div>

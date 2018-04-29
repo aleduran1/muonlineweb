@@ -1,0 +1,13 @@
+<h3><i class="fa fa-envelope"></i> Votar</h3>
+<div class="well">
+  <h6><i class="fa fa-info-circle"></i> Votando ayudas al servidor a hacerse popular y en consecuencia a que aumente la cantidad de jugadores, recibiendo una cantidad de mu coins como recompensa.</h6>
+</div>
+<div class="well clearfix">
+  <h4>UltraTop100</h5>
+  {{#if canVote.ultratop100}}
+  <a href="http://ultratop100.com/in/1456505340?postback={{auth.memb___id}}"><button class="btn btn-wazaa raised pull-right">VOTAR</button></a>
+  <p><span class="account-label">Mu Coins: </span> <span class="account-info">{{ultratop100coins}}</span></p>
+  {{else}}
+  <p><span class="account-label" style="color: white;">Ya has votado en UltraTop100, intenta nuevamente cuando transcurran 12 horas de tu última votación.</span></p>
+  {{/if}}
+</div>

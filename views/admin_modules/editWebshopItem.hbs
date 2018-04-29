@@ -1,0 +1,167 @@
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        WEBSHOP: Edit Item
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          {{#if error}}
+            <div class="alert alert-danger alert-dismissible">
+              <h4><i class="icon fa fa-ban"></i> Problem!</h4>
+              {{error}}
+            </div>
+          {{/if}}
+          {{#if validationError}}
+            <div class="alert alert-danger alert-dismissible">
+              <h4><i class="icon fa fa-ban"></i> Problem!</h4>
+              <ul>
+                {{#each validationError}}
+                  <li>{{msg}}</li>
+                {{/each}}
+              </ul>
+            </div>
+          {{/if}}
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Editing an item...</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" method="post" action="/admincp/webshop/item/edit/{{item.id}}">
+              <div class="box-body">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" value="{{item.name}}" readonly>
+                  </div>
+                  <div class="form-group">
+                    <label for="cost">Cost:</label>
+                    <input type="text" class="form-control" id="cost" name="cost" value="{{item.cost}}" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="discount">Discount (%):</label>
+                    <input type="text" class="form-control" id="discount" name="discount" value="{{item.discount}}" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="categoryid">Category:</label>
+                    <select id="categoryid" name="categoryid" class="form-control">
+                        {{#each webshopCategories}}
+                        <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="active">Active: </label>
+                    <input type="checkbox" id="active" name="active" value="1" {{#if item.active}}checked{{/if}}>
+                  </div>
+                </div>
+              </div>
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Options</h3>
+              </div>
+              <div class="box-body">
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="maxLevel">Max Level:</label>
+                    <select id="maxLevel" name="maxLevel" class="form-control">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="maxOption">Max Option:</label>
+                    <select id="maxOption" name="maxOption" class="form-control">
+                      <option id="option1" value="1">1</option>
+                      <option id="option2" value="2">2</option>
+                      <option id="option3" value="3">3</option>
+                      <option id="option4" value="4">4</option>
+                      <option id="option5" value="5">5</option>
+                      <option id="option6" value="6">6</option>
+                      <option id="option7" value="7">7</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="canLuck">Luck:</label>
+                    <input type="checkbox" id="canLuck" name="canLuck" value="1" {{#if item.canLuck}}checked{{/if}}>
+                  </div>
+                  <div class="form-group">
+                    <label for="canSkill">Skill:</label>
+                    <input type="checkbox" id="canSkill" name="canSkill" value="1" {{#if item.canSkill}}checked{{/if}}>
+                  </div>
+                  <div class="form-group">
+                    <label id="label-excellentOption1" for="excellentOption1">{{itemDetails.excellentText1}}</label>
+                    <input type="checkbox" id="excellentOption1" name="excellentOption1" value="1" {{#if item.excellentOption1}}checked{{/if}}>
+                  </div>
+                  <div class="form-group">
+                    <label id="label-excellentOption2" for="excellentOption2">{{itemDetails.excellentText2}}</label>
+                    <input type="checkbox" id="excellentOption2" name="excellentOption2" value="1" {{#if item.excellentOption2}}checked{{/if}}>
+                  </div>
+                  <div class="form-group">
+                    <label id="label-excellentOption3" for="excellentOption3">{{itemDetails.excellentText3}}</label>
+                    <input type="checkbox" id="excellentOption3" name="excellentOption3" value="1" {{#if item.excellentOption3}}checked{{/if}}>
+                  </div>
+                  <div class="form-group">
+                    <label id="label-excellentOption4" for="excellentOption4">{{itemDetails.excellentText4}}</label>
+                    <input type="checkbox" id="excellentOption4" name="excellentOption4" value="1" {{#if item.excellentOption4}}checked{{/if}}>
+                  </div>
+                  <div class="form-group">
+                    <label id="label-excellentOption5" for="excellentOption5">{{itemDetails.excellentText5}}</label>
+                    <input type="checkbox" id="excellentOption5" name="excellentOption5" value="1" {{#if item.excellentOption5}}checked{{/if}}>
+                  </div>
+                  <div class="form-group">
+                    <label id="label-excellentOption6" for="excellentOption6">{{itemDetails.excellentText6}}</label>
+                    <input type="checkbox" id="excellentOption6" name="excellentOption6" value="1" {{#if item.excellentOption6}}checked{{/if}}>
+                  </div>
+                  <div class="form-group">
+                    <label for="maxExcellent">Max Excellent Options:</label>
+                    <select id="maxExcellent" name="maxExcellent" class="form-control">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+              <input type="hidden" name="_csrf" value="{{csrfToken}}">
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+              <!-- /.box-body -->
+    </section>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    <script>
+      $('#categoryid').val("{{item.categoryid}}");
+      $('#maxLevel').val("{{item.maxLevel}}");
+      $('#maxOption').val("{{item.maxOption}}");
+      $('#maxExcellent').val('{{item.maxExcellent}}');
+    </script>

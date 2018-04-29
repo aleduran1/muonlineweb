@@ -1,0 +1,59 @@
+<div class="modal fade" id="buyModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">¿Desea comprar este objeto?</h4>
+      </div>
+      <form id="buy-item-form" action="/marketplace/add" method="post">
+        <div class="modal-body">
+          <input type="hidden" name="_csrf" value="{{csrfToken}}">
+          <div id="loading-buy" class="overlay" style="display: inherit">
+            <center><i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i></center>
+          </div>
+          <div id="buy-body">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger raised" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-success raised">Comprar</button>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<div class="categories well">
+  <h3>Categorias</h3>
+  {{#each webshopCategories}}
+    {{#if active}}
+      <a class="btn btn-info btn-xs category-button" href="/webshop/category/{{id}}">{{name}}
+		{{#if discount}}
+			<sup class="sup-red">-{{discount}}%</sup>
+		{{/if}}
+		</a>
+    {{/if}}
+  {{/each}}
+  <a class="btn btn-success btn-xs category-button" href="/webshop/deals">Ofertas</a>
+</div>
+<div class="items well">
+  {{#if category}}
+    <h3>{{category.name}}</h3>{{/if}}
+  {{#each webshopItems}}
+    {{#if active}}
+      <div class="well webshop-well">
+        {{#if discount}}
+          <div class="ribbon"><span>{{discount}}% OFF</span></div>
+        {{/if}}
+        <center>
+          <p>{{name}}</p>
+          <img class="img webshop-item" data-toggle="tooltip" data-placement="auto" data-html="true" title="{{data.dataHTML}}" src="{{data.image}}.gif">
+          <p>Costo: {{cost}}</p>
+          <button type="button" data-item-id="{{id}}" class="btn btn-wazaa raised btn-xs buybtn">Comprar</button>
+        </center>
+      </div>
+    {{/if}}
+  {{/each}}
+</div>

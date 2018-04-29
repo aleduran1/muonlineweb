@@ -1,0 +1,25 @@
+<div class="well clearfix">
+  <a href="/marketplace/add">
+    <button type="button" class="btn btn-success raised pull-right"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar..</button>
+  </a>
+  <h3><i class="fa fa-list-alt" aria-hidden="true"></i> Mi Mercado</h3>
+  <h6><i class="fa fa-info-circle"></i> Bienvenid@ a tu mercado, aquí puedes agregar o remover items del listado, recuerda que una vez listado el item no puedes cambiarle el precio ni la descripción, y que para poder remover un elemento necesitas el espacio en el baúl, ya que, el item vuelve al mismo</h6>
+  <br>
+  {{#each mylistings}}
+    <div class="well well-vip clearfix">
+      <form action="/marketplace/remove" method="POST">
+        <input type="hidden" name="_csrf" value="{{../csrfToken}}">
+        <input type="hidden" id="id" name="id" value="{{id}}">
+        <button type="submit" class="btn btn-danger raised pull-right"><i class="fa fa-times" aria-hidden="true"></i> Remover</button>
+        <div class="col-md-3">
+          <img class="center-block" data-toggle="tooltip" data-placement="auto" data-html="true" title="{{data.dataHTML}}" src="{{data.image}}.gif">
+        </div>
+        <div class="col-md-6">
+          <p><span class="account-label">{{name}}</span></p>
+          <p><span class="account-description">{{description}}</span></p>
+          <p><span class="account-label">Costo: </span><span class="account-info">{{cost}} Mu Coins</span></p>
+        </div>
+      </form>
+    </div>
+  {{/each}}
+</div>

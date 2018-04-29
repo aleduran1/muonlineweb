@@ -1,0 +1,64 @@
+{{#if vip.active}}
+  <div class="well">
+    <h4><i class="fa fa-plus-circle" aria-hidden="true"></i> Estado de VIP</h4>
+    <p><span class="account-label">VIP: </span><span class="account-info">{{vip.name}}</span></p>
+    <p><span class="account-label">TERMINA EL: </span><span class="account-info">{{date-format-dmyhms vip.last}}</span></p>
+    <p><span class="account-label">MU COINS: </span><span class="account-info">{{auth.mucoins}}</span></p>
+  </div>
+  <div class="well">
+    <h4><i class="fa fa-plus-circle" aria-hidden="true"></i> Extender VIP {{vip.name}} <a class="h4-link" href="#beneficios">¿Qué beneficios obtengo?</a></h4>
+    {{#each vip.paquetes}}
+      <div class="well well-vip">
+        <form action="/account/vip/extend" method="POST">
+          <button type="submit" class="btn btn-wazaa raised pull-right"><i class="fa fa-plus-circle" aria-hidden="true"></i> Extender</button>
+          <input type="hidden" name="_pn" value="{{@index}}">
+          <input type="hidden" name="_csrf" value="{{../csrfToken}}">
+          <p><span class="account-label">Dias: </span> <span class="account-info">{{dias}}</span></p>
+          <p><span class="account-label">Mu Coins: </span> <span class="account-info">{{coins}}</span></p>
+        </form>
+      </div>
+    {{/each}}
+  </div>
+{{else}}
+  {{#if vipList.trial.active}}
+    {{#unless auth.premiumdone}}
+      <div class="well well-trial">
+        <form action="/account/vip/trial" method="POST">
+          <button type="submit" class="btn btn-success raised pull-right"><i class="fa fa-plus-circle" aria-hidden="true"></i> ACTIVAR PRUEBA</button>
+          <input type="hidden" name="_csrf" value="{{csrfToken}}">
+          <p><span class="account-label">PRUEBA GRATIS DE VIP </span>
+            <p><span class="account-label">Dias: </span> <span class="account-info">{{vipList.trial.days}}</span></p>
+        </form>
+      </div>
+    {{/unless}}
+  {{/if}}
+  <div class="well">
+    <h4><i class="fa fa-plus-circle" aria-hidden="true"></i> Estado de VIP</h4>
+    <p><span class="account-label">VIP: </span><span class="account-info red">INACTIVO</span></p>
+    {{#if auth.mucoins}}
+      <p><span class="account-label">Mu Coins: </span> <span class="account-info">{{auth.mucoins}}</span></p>
+    {{else}}
+      <p><span class="account-label">Mu Coins: </span> <span class="account-info"><a href="/donate"><button type="button" class="btn btn-wazaa raised btn-xs">Adquirir Mu Coins</button></a></span></p>
+    {{/if}}
+  </div>
+  {{#each vipList.accountLevel}}
+    {{#if active}}
+      <div class="well">
+        <h4><i class="fa fa-plus-circle" aria-hidden="true"></i> CONTRATAR VIP {{name}} <a class="h4-link" href="#beneficios">¿Qué beneficios obtengo?</a></h4>
+        {{#each paquetes}}
+          <div class="well well-vip">
+            <form action="/account/vip/buy" method="POST">
+              <button type="submit" class="btn btn-wazaa raised pull-right"><i class="fa fa-plus-circle" aria-hidden="true"></i> Contratar</button>
+              <input type="hidden" name="_vn" value="{{incremented @../index}}">
+              <input type="hidden" name="_pn" value="{{@index}}">
+              <input type="hidden" name="_csrf" value="{{../../csrfToken}}">
+              <p><span class="account-label">Dias: </span> <span class="account-info">{{dias}}</span></p>
+              <p><span class="account-label">Mu Coins: </span> <span class="account-info">{{coins}}</span></p>
+            </form>
+          </div>
+        {{/each}}
+      </div>
+    {{/if}}
+  {{/each}}
+{{/if}}
+{{>vipBenefits}}

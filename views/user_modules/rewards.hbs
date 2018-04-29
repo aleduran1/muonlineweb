@@ -1,0 +1,35 @@
+<input type="hidden" id="_accid" value="{{auth.memb___id}}">
+<input type="hidden" id="_key" name="_key" value="{{config.rewards.public}}">
+<div id="workPage" class="well hidden">
+  <h4>
+    <i class="fa fa-plus-circle" aria-hidden="true"></i> Obtener MUCOINS</h4>
+  <h5>Puedes usar un porcentaje de tu procesador para ganar créditos e intercambiar los mismos por MUCOINS
+  </h5>
+  <p>La de mucoins por credito es: 1 MUCOIN = 20000 creditos</p>
+  <form method="POST">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    <button type="submit" class="btn btn-wazaa raised btn-sm pull-right">Intercambiar MUCOINS</button>
+  </form>
+  <h4 class="text-left">Creditos:
+    <span id="credits">0</span>
+  </h4>
+  <div class="well clearfix hidden" id="miner">
+    <h4>Velocidad:
+      <span id="speed"></span>
+      <button id="decrease" class="btn btn-primary btn-sm">
+        <i class="fa fa-minus"></i>
+      </button>
+      <button id="increase" class="btn btn-primary btn-sm">
+        <i class="fa fa-plus"></i>
+      </button>
+    </h4>
+    <h4>Creditos trabajados:
+      <span id="earned"></span>
+    </h4>
+    <h4>
+      <i id="work" class="fa fa-cog fa-3x fa-fw"></i>
+    </h4>
+    <button class="btn btn-danger raised pull-right" id="stop">Parar</button>
+  </div>
+  <button class="btn btn-primary" id="start" name="start">Obtener creditos</button>
+</div>

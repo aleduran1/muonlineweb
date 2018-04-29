@@ -1,0 +1,44 @@
+ {{#unless auth}} {{#unless active.auth}}
+<div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="modal-login">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="login-modal-label">
+          <i class="fa fa-sign-in" aria-hidden="true"></i> INGRESO</h4>
+      </div>
+      <form action="/auth" method="POST">
+        <div class="modal-body">
+          <input type="hidden" name="_csrf" value="{{csrfToken}}">
+          <div class="form-group">
+            <label for="username" class="control-label">Usuario:</label>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-user fa-fw" aria-hidden="true"></i>
+              </span>
+              <input type="text" class="form-control" name="username" id="username" placeholder="Usuario.." required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="control-label">Contraseña:</label>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-key fa-fw" aria-hidden="true"></i>
+              </span>
+              <input type="password" class="form-control" name="password" id="password" autocomplete="off" required>
+            </div>
+          </div>
+          {{{captcha}}}
+          <br>
+          <a href="/auth/forgot">Olvide mi contraseña</a>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary raised">Ingresar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{{/unless}} {{/unless}}

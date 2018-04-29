@@ -1,0 +1,140 @@
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Webshop
+      </h1>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          {{#if success}}
+            <div class="alert alert-success alert-dismissible">
+              <h4><i class="icon fa fa-check"></i> Success!</h4>
+              {{success}}
+            </div>
+          {{/if}}
+          {{#if error}}
+            <div class="alert alert-danger alert-dismissible">
+              <h4><i class="icon fa fa-ban"></i> Problem!</h4>
+              {{error}}
+            </div>
+          {{/if}}
+          {{#if validationError}}
+            <div class="alert alert-danger alert-dismissible">
+              <h4><i class="icon fa fa-ban"></i> Problem!</h4>
+              <ul>
+                {{#each validationError}}
+                  <li>{{msg}}</li>
+                {{/each}}
+              </ul>
+            </div>
+          {{/if}}
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Categories List</h3>
+              <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tbody><tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Discount</th>
+                  <th>Status</th>
+                  <th>Tools</th>
+                </tr>
+                {{#each webshopCategories}}
+	                <tr>
+	                    <td>{{id}}</td>
+	                    <td>{{name}}</td>
+	                    <td>{{discount}}%</td>
+	                    <td>{{#if active}}<span class="label label-success">Active</span>{{else}}<span class="label label-danger">Inactive</span>{{/if}}</td>
+	                    <td>
+		                  	<div class="tools" style="font-size: 18px">
+		                  		<a href="javascript:post('/admincp/webshop/category/toggle', {id: '{{id}}', _csrf: '{{../csrfToken}}'});"><i class="fa fa-eye fa-fw"></i></a> |
+	                    		<a href="/admincp/webshop/category/edit/{{id}}"><i class="fa fa-edit fa-fw"></i></a> |
+	                    		<a style="color: red;" href="javascript:post('/admincp/webshop/category/remove', {id: '{{id}}', _csrf: '{{../csrfToken}}'});"><i class="fa fa-trash-o fa-fw"></i></a>
+	                  		</div>
+                  		</td>
+	                </tr>
+	              {{/each}}
+              </tbody></table>
+              <div class="box-footer">
+                <a href="/admincp/webshop/category/add"><button class="btn btn-primary pull-right">Add Category...</button></a>
+              </div>
+            </div>
+        </div>
+        <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Item List</h3>
+              <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tbody><tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Discount</th>
+                  <th>Status</th>
+                  <th>Category</th>
+                  <th>Cost</th>
+                  <th>Tools</th>
+                </tr>
+                {{#each webshopItems}}
+                  <tr>
+                      <td>{{id}}</td>
+                      <td>{{name}}</td>
+                      <td>{{discount}}%</td>
+                      <td>{{#if active}}<span class="label label-success">Active</span>{{else}}<span class="label label-danger">Inactive</span>{{/if}}</td>
+                      <td>{{categoryid}}</td>
+                      <td>{{cost}}</td>
+                      <td>
+                        <div class="tools" style="font-size: 18px">
+                          <a href="javascript:post('/admincp/webshop/item/toggle', {id: '{{id}}', _csrf: '{{../csrfToken}}'});"><i class="fa fa-eye fa-fw"></i></a> |
+                          <a href="/admincp/webshop/item/edit/{{id}}"><i class="fa fa-edit fa-fw"></i></a> |
+                          <a style="color: red;" href="javascript:post('/admincp/webshop/item/remove', {id: '{{id}}', _csrf: '{{../csrfToken}}'});"><i class="fa fa-trash-o fa-fw"></i></a>
+                        </div>
+                      </td>
+                  </tr>
+                {{/each}}
+              </tbody></table>
+              <div class="box-footer">
+                <a href="/admincp/webshop/item/add"><button class="btn btn-primary pull-right">Add Item...</button></a>
+              </div>
+            </div>
+      </div>
+              <!-- /.box-body -->
+    </section>
+    <!-- /.content -->
+    <script>
+      function post(path, params, method) {
+        method = method || "post"; // Set method to post by default if not specified.
+        // The rest of this code assumes you are not using a library.
+        // It can be made less wordy if you use one.
+        var form = document.createElement("form");
+        form.setAttribute("method", method);
+        form.setAttribute("action", path);
+
+        for(var key in params) {
+            if(params.hasOwnProperty(key)) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", params[key]);
+
+                form.appendChild(hiddenField);
+            }
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+      }
+    </script>

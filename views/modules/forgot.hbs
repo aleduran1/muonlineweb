@@ -1,0 +1,23 @@
+<h3>
+  <i class="fa fa-key"></i> Recuperar Contraseña</h3>
+<div class="well clearfix">
+  <form action="/auth/forgot" method="post">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    <div class="col-md-5 col-md-offset-3">
+      <div class="form-group">
+        <label for="mail" class="control-label">Correo Electrónico:</label>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>
+          </span>
+          <input type="email" class="form-control" id="mail" name="mail" placeholder="ejemplo@servicio.com" required>
+        </div>
+      </div>
+      {{{captcha}}}
+      <br>
+      <center>
+        <button type="submit" class="btn btn-success raised">Enviar Mail</button>
+      </center>
+    </div>
+  </form>
+</div>

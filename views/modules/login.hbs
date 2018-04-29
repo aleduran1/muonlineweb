@@ -1,0 +1,32 @@
+<h4>
+  <i class="fa fa-sign-in" aria-hidden="true"></i> INGRESO</h4>
+<form action="/auth" method="post">
+  <input type="hidden" name="_csrf" value="{{csrfToken}}">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="form-group">
+      <label for="username" class="control-label">Usuario:</label>
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fa fa-user fa-fw" aria-hidden="true"></i>
+        </span>
+        <input type="text" class="form-control" name="username" id="username" placeholder="Usuario.." required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password" class="control-label">Contraseña:</label>
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fa fa-key fa-fw" aria-hidden="true"></i>
+        </span>
+        <input type="password" class="form-control" name="password" id="password" autocomplete="off" required>
+      </div>
+    </div>
+    {{{captcha}}}
+    <br>
+    <a href="/auth/forgot">Olvide mi contraseña</a>
+    <br>
+    <center>
+      <button type="submit" class="btn btn-primary raised">Ingresar</button>
+    </center>
+  </div>
+</form>

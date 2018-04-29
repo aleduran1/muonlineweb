@@ -1,0 +1,69 @@
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Unstuck Settings
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          {{#if success}}
+            <div class="alert alert-success alert-dismissible">
+              <h4><i class="icon fa fa-check"></i> Success!</h4>
+              {{success}}
+            </div>
+          {{/if}}
+          {{#if error}}
+            <div class="alert alert-danger alert-dismissible">
+              <h4><i class="icon fa fa-ban"></i> Problem!</h4>
+              {{error}}
+            </div>
+          {{/if}}
+          {{#if validationError}}
+            <div class="alert alert-danger alert-dismissible">
+              <h4><i class="icon fa fa-ban"></i> Problem!</h4>
+              <ul>
+                {{#each validationError}}
+                  <li>{{msg}}</li>
+                {{/each}}
+              </ul>
+            </div>
+          {{/if}}
+          <!-- general form elements -->
+          <form role="form" method="post" action="/admincp/unstuck">
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                <h3 class="box-title">Unstuck Settings</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+              <div class="box-body">
+                <div class="col-md-4 col-md-offset-4">
+                  <div class="form-group">
+                    <label for="mapnumber">Map Number:</label>
+                    <input type="text" class="form-control" id="mapNumber" name="mapNumber" value="{{unstuck.mapNumber}}" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="posX">X Coords:</label>
+                    <input type="text" class="form-control" id="posX" name="posX" value="{{unstuck.posX}}" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="posY">Y Coords:</label>
+                    <input type="text" class="form-control" id="posY" name="posY" value="{{unstuck.posY}}" required>
+                  </div>
+                </div>
+              </div>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+          </form>
+        </div>
+      </div>
+      <!-- /.box-body -->
+      <!-- /.box-body -->        
+    </section>
+    <!-- /.content -->

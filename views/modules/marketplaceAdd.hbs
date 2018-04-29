@@ -1,0 +1,61 @@
+<h3><i class="fa fa-mouse-pointer"></i> Selecciona el item a vender</h3>
+<div class="well">
+  <h6><i class="fa fa-info-circle"></i> Haz click en el item que desees listar para vender y se abrirá un menú en el cual debes insertar el costo deseado en Mu Coins por el cual deseas vender el item, por último haz click en Listar. Recuerda que si listaste un item por error, puedes retirarlo del mercado en la sección de Mi Mercado</h6>
+</div>
+<div class="modal fade" id="sellModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">¿Desea listar ese objeto?</h4>
+      </div>
+      <form id="sell-item" action="/marketplace/add" method="post">
+        <div class="modal-body">
+          <input type="hidden" name="_csrf" value="{{csrfToken}}">
+          <input type="hidden" id="row" name="row" value="">
+          <input type="hidden" id="column" name="column" value="">
+          <div class="row">
+            <div id="item-capsule" class="col-md-3">
+            </div>
+            <div class="col-md-9">
+              <div class="form-group">
+                <label for="description" class="control-label">Descripción (opcional):</label>
+                <input type="text" class="form-control" name="description" id="description">
+                <span id="helpBlock" class="help-block">Máximo 255 caracteres</span>
+              </div>
+              <div class="form-group">
+                <label for="cost" class="control-label">Costo:</label>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-money fa-fw" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" name="cost" id="cost" placeholder="$" required>
+                </div>
+                <span id="helpBlock" class="help-block">El costo por el cual deseas vender el item debe ser entero y mayor a 0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger raised" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-success raised">Listar</button>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<div class="warehouse">
+  {{#each warehouse}}
+    {{#each this}}
+      {{#unless isEmpty}}
+        <div class="slot" data-row="{{@../index}}" data-column="{{@index}}">
+          <img class="item-marketplace" data-toggle="tooltip" data-placement="auto" data-html="true" title="{{dataHTML}}" src="{{image}}.gif"></img>
+        </div>
+        {{else}}
+          <div class="slot">
+          </div>
+      {{/unless}}
+    {{/each}}
+  {{/each}}
+</div>
